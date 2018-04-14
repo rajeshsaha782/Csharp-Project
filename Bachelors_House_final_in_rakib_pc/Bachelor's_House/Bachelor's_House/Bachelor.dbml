@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Bachelor" Class="BachelorDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Bachelor.mdf;Integrated Security=True;Connect Timeout=30" SettingsObjectName="Bachelor_s_House.Properties.Settings" SettingsPropertyName="BachelorConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Member" Member="Members">
+    <Type Name="Member">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="organization" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="personal_phone" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="address" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="father_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="father_phone" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="joinning_date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Member_Account" Member="Account" ThisKey="id" OtherKey="id" Type="Account" Cardinality="One" />
+      <Association Name="Member_MealList" Member="MealList" ThisKey="id" OtherKey="id" Type="MealList" Cardinality="One" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Account" Member="Accounts">
+    <Type Name="Account">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="balance" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="totalNumberOfMeal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Member_Account" Member="Member" ThisKey="id" OtherKey="id" Type="Member" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Balance" Member="Balances">
+    <Type Name="Balance">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="totalBalance" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="totalCost" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MealList" Member="MealLists">
+    <Type Name="MealList">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="dailyMeal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Member_MealList" Member="Member" ThisKey="id" OtherKey="id" Type="Member" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TotalCal" Member="TotalCals">
+    <Type Name="TotalCal">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NumberOfMeal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Deposit" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Cost" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Balance" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
